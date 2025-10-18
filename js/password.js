@@ -206,20 +206,20 @@ function hidePasswordError() {
  * 处理密码提交事件（异步）
  */
 async function handlePasswordSubmit() {
-    // const passwordInput = document.getElementById('passwordInput');
-    // const password = passwordInput ? passwordInput.value.trim() : '';
-    // if (await verifyPassword(password)) {
+    const passwordInput = document.getElementById('passwordInput');
+    const password = passwordInput ? passwordInput.value.trim() : '';
+    if (await verifyPassword(password)) {
         hidePasswordModal();
 
         // 触发密码验证成功事件
         document.dispatchEvent(new CustomEvent('passwordVerified'));
-    // } else {
-    //     showPasswordError();
-    //     if (passwordInput) {
-    //         passwordInput.value = '';
-    //         passwordInput.focus();
-    //     }
-    // }
+    } else {
+        showPasswordError();
+        if (passwordInput) {
+            passwordInput.value = '';
+            passwordInput.focus();
+        }
+    }
 }
 
 /**
